@@ -5,7 +5,13 @@
  */
 
 void main() {
-    System.out.println(naiveFizzBuzz(1000));
+    final int upto = 1000;
+    //final int upto = 2000;
+
+    System.out.println("naive: " + naiveFizzBuzz(upto));
+
+    int optimal = multipleOfSumUpTo(3, upto) + multipleOfSumUpTo(5, upto) - multipleOfSumUpTo(15, upto);
+    System.out.println("optimal: " + optimal);
 }
 
 int naiveFizzBuzz(int upto) {
@@ -16,4 +22,11 @@ int naiveFizzBuzz(int upto) {
         }
     }
     return sum;
+}
+
+int multipleOfSumUpTo(final int multiplier, final int upto) {
+    // use the summation formula, where 'n', or 'num' here is the largest integer, whose product with 'multiplier' does
+    // not exceed 'upto'.
+    var num = (upto - 1) / multiplier;
+    return multiplier * ((num * (num + 1)) / 2);
 }
